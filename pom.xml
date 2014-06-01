@@ -6,14 +6,12 @@
 	<version>1.0-SNAPSHOT</version>
 	<packaging>war</packaging>
 	<name>SForums Application</name>
-	<url>http://github.com/marakana/sforums</url>
-	<description>
-	  Simple Spring and Hibernate Web Application used in Marakana Training Classes
-	</description>
+	<url>http://github.com/thenewcircle/sforums</url>
+	<description>Simple Spring and Hibernate Web Application used in NewCircle Training Classes</description>
 	<inceptionYear>2008</inceptionYear>
 	<organization>
-		<name>Marakana, Inc.</name>
-		<url>http://marakana.com/</url>
+		<url>https://thenewcircle.com/</url>
+		<name>NewCircle Inc</name>
 	</organization>
 
 	<developers>
@@ -23,7 +21,17 @@
 			<email>sasa(at)marakana(dot)com</email>
 			<organization>Marakana, Inc.</organization>
 			<roles>
-				<role>Project lead</role>
+				<role>Original Author</role>
+			</roles>
+			<timezone>-7</timezone>
+		</developer>
+				<developer>
+			<id>gordon</id>
+			<name>Gordon Force Jr</name>
+			<email>gordon(at)thenewcircle(dot)com</email>
+			<organization>NewCircle, Inc.</organization>
+			<roles>
+				<role>Project Lead</role>
 			</roles>
 			<timezone>-7</timezone>
 		</developer>
@@ -54,9 +62,9 @@
 
 	<properties>
 		<final-name>sforums</final-name>
-		<webapp-directory>../../tomcat/webapps</webapp-directory>
+		<webapp-directory>${CATALINA_BASE}/webapps</webapp-directory>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<compiler-plugin-version>3.0</compiler-plugin-version>
+		<compiler-plugin-version>3.1</compiler-plugin-version>
 		<war-plugin-version>2.3</war-plugin-version>
 		<assembly-plugin-version>2.4</assembly-plugin-version>
 		<jdk-version>1.7</jdk-version>
@@ -65,12 +73,13 @@
 		<jstl-version>1.2</jstl-version>
 		<standard-taglibs-version>1.1.2</standard-taglibs-version>
 		<junit-version>4.10</junit-version>
-		<slf4j-version>1.7.5</slf4j-version>
-		<logback-classic-version>1.0.7</logback-classic-version>
-		<hibernate-version>4.2.1.Final</hibernate-version>
+		<slf4j-version>1.7.7</slf4j-version>
+		<logback-classic-version>1.1.2</logback-classic-version>
+		<hibernate-version>4.3.5.Final</hibernate-version>
 		<ehcache-version>2.6.5</ehcache-version>
-		<spring-framework-version>3.2.2.RELEASE</spring-framework-version>
+		<spring-framework-version>4.0.5.RELEASE</spring-framework-version>
 		<hibernate-validator-version>4.3.1.Final</hibernate-validator-version>
+		<spring-security-version>3.2.4.RELEASE</spring-security-version>
 	</properties>
 
 	<build>
@@ -133,12 +142,12 @@
 			<version>${jsp-version}</version>
 			<scope>provided</scope>
 		</dependency>
-        <dependency>
-            <groupId>javax.el</groupId>
-            <artifactId>javax.el-api</artifactId>
-            <version>${jsp-version}</version>
-            <scope>provided</scope>
-        </dependency>
+		<dependency>
+			<groupId>javax.el</groupId>
+			<artifactId>javax.el-api</artifactId>
+			<version>${jsp-version}</version>
+			<scope>provided</scope>
+		</dependency>
 		<dependency>
 			<groupId>javax.servlet</groupId>
 			<artifactId>jstl</artifactId>
@@ -183,44 +192,50 @@
 			<version>${ehcache-version}</version>
 			<scope>runtime</scope>
 		</dependency>
-		
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-context</artifactId>
-            <version>${spring-framework-version}</version>
-            <exclusions>
-                <exclusion>
-                    <groupId>commons-logging</groupId>
-                    <artifactId>commons-logging</artifactId>
-                </exclusion>
-            </exclusions>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-jdbc</artifactId>
-            <version>${spring-framework-version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-orm</artifactId>
-            <version>${spring-framework-version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-web</artifactId>
-            <version>${spring-framework-version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-webmvc</artifactId>
-            <version>${spring-framework-version}</version>
-        </dependency>
-        
-        <dependency>
-            <groupId>org.hibernate</groupId>
-            <artifactId>hibernate-validator</artifactId>
-            <version>${hibernate-validator-version}</version>
-        </dependency>
+
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-context</artifactId>
+			<version>${spring-framework-version}</version>
+			<exclusions>
+				<exclusion>
+					<groupId>commons-logging</groupId>
+					<artifactId>commons-logging</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-orm</artifactId>
+			<version>${spring-framework-version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-webmvc</artifactId>
+			<version>${spring-framework-version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-validator</artifactId>
+			<version>${hibernate-validator-version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-config</artifactId>
+			<version>${spring-security-version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-taglibs</artifactId>
+			<version>${spring-security-version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-aspects</artifactId>
+			<version>${spring-security-version}</version>
+		</dependency>
 
 	</dependencies>
 </project>
