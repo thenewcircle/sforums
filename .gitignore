@@ -40,6 +40,7 @@ Thumbs.db
 # Eclipse Artifacts #
 #####################
 *.metadata/*
+/.settings/
 
 # Any SVN left around #
 #######################
