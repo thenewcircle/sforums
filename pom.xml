@@ -79,7 +79,6 @@
 		<ehcache-version>2.6.5</ehcache-version>
 		<spring-framework-version>4.0.5.RELEASE</spring-framework-version>
 		<hibernate-validator-version>4.3.1.Final</hibernate-validator-version>
-		<spring-security-version>3.2.4.RELEASE</spring-security-version>
 	</properties>
 
 	<build>
@@ -219,22 +218,6 @@
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-validator</artifactId>
 			<version>${hibernate-validator-version}</version>
-		</dependency>
-
-		<dependency>
-			<groupId>org.springframework.security</groupId>
-			<artifactId>spring-security-config</artifactId>
-			<version>${spring-security-version}</version>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework.security</groupId>
-			<artifactId>spring-security-taglibs</artifactId>
-			<version>${spring-security-version}</version>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework.security</groupId>
-			<artifactId>spring-security-aspects</artifactId>
-			<version>${spring-security-version}</version>
 		</dependency>
 
 	</dependencies>
